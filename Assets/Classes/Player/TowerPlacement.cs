@@ -11,6 +11,9 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField]
     private Camera PlayerCamera;
 
+    [SerializeField]
+    private PlayerStats PlayerStatistics;
+
     // Drag your tower prefab into this field in the Inspector
     [SerializeField]
     private GameObject TowerToPlace;
@@ -64,9 +67,10 @@ public class TowerPlacement : MonoBehaviour
 
                     if (!Physics.CheckBox(BoxCenter, HalfExtents, Quaternion.identity, PlacementCheckMask, QueryTriggerInteraction.Ignore))
                     {
-                        GameLoopManager.TowersInGame.Add(
-                            CurrentPlacingTower.GetComponent<TowerBehaviour>()
-                        );
+                        TowerBehaviour CurrentTowerBehaviour = CurrentPlacingTower.GetComponent<TowerBehaviour>();
+                        GameLoopManager.TowersInGame.Add(CurrentTowerBehaviour);
+
+                        PlayerStatistics.AddMoney(-CurrentTowerBehaviour.SummonCost);
 
                         TowerCollider.isTrigger = false;
                         CurrentPlacingTower = null;
@@ -78,6 +82,15 @@ public class TowerPlacement : MonoBehaviour
 
     public void SetTowerToPlace(GameObject tower)
     {
-        CurrentPlacingTower = Instantiate(tower, Vector3.zero, Quaternion.identity);
+        int TowerSummonCost = tower.GetComponent<TowerBehaviour>().SummonCost;
+
+        if(PlayerStatistics.GetMoney() >= TowerSummonCost)
+        {
+            CurrentPlacingTower = Instantiate(tower, Vector3.zero, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("You need more money to place this tower down");
+        }
     }
 }

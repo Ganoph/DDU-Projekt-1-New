@@ -12,6 +12,8 @@ public class TowerBehaviour : MonoBehaviour
     public VisualEffect FireVFX;
     private AudioSource _audioSource;
 
+
+    public int SummonCost = 100;
     public float Damage;
     public float Firerate;
     public float Range;

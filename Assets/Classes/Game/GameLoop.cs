@@ -16,6 +16,8 @@ public class GameLoopManager : MonoBehaviour
     private static Queue<Enemy> EnemiesToRemove;
     private static Queue<int> EnemyIDsToSummon;
 
+    private PlayerStats PlayerStatistics;
+
     public Transform NodeParent;
 
     public bool EndLoop;
@@ -23,6 +25,7 @@ public class GameLoopManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        PlayerStatistics = FindObjectOfType<PlayerStats>();
         DamageData = new Queue<EnemyDamageData>();
         TowersInGame = new List<TowerBehaviour>();
         EnemyIDsToSummon = new Queue<int>();
@@ -133,6 +136,8 @@ public class GameLoopManager : MonoBehaviour
                 {
                     EnemyDamageData CurrentDamageData = DamageData.Dequeue();
                     CurrentDamageData.TargetedEnemy.Health -= CurrentDamageData.TotalDamage / CurrentDamageData.Resistance;
+                    PlayerStatistics.AddMoney((int)CurrentDamageData.TotalDamage);
+
                     //Removes enemy
                     if (CurrentDamageData.TargetedEnemy.Health <= 0f)
                     {
