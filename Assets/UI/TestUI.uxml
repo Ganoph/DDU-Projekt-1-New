@@ -2,12 +2,16 @@
     <Style src="project://database/Assets/UI/Stylesheet.uss?fileID=7433441132597879392&amp;guid=78edc41a2257e50449bae4c810cb66d0&amp;type=3#Stylesheet"/>
     <ui:VisualElement name="MainHUD" style="flex-grow: 1; justify-content: flex-end; align-items: stretch; align-content: auto;">
         <ui:VisualElement name="TopContainer" style="flex-grow: 1; align-items: center; justify-content: flex-start; align-content: auto; max-height: none; top: auto;">
-            <ui:VisualElement name="WaveBackground" style="flex-grow: 1; align-items: center; align-content: auto; justify-content: flex-start; position: absolute; top: 7px; width: 146px; height: 55px; background-image: url(&quot;project://database/Assets/UI/Wave%20Count.png?fileID=2800000&amp;guid=06660d3d439799344917f62a2a141721&amp;type=3#Wave Count&quot;); -unity-background-scale-mode: scale-and-crop;">
-                <ui:Label text="0" name="WaveCount" style="position: absolute; top: 10px; left: 100px; -unity-font-definition: url(&quot;project://database/Assets/UI/Iceland-Regular.ttf?fileID=12800000&amp;guid=37f79c70bf284cc4a8468bd5f5ab57d9&amp;type=3#Iceland-Regular&quot;); font-size: 25px; color: rgb(255, 255, 255); -unity-text-align: upper-center; width: 24px;"/>
+            <ui:VisualElement name="WaveBackground" style="flex-grow: 1; align-items: center; align-content: auto; justify-content: flex-start; position: absolute; top: auto; width: 167px; height: 83px; background-image: url(&quot;project://database/Assets/UI/Wave%20Count.png?fileID=2800000&amp;guid=06660d3d439799344917f62a2a141721&amp;type=3#Wave Count&quot;); -unity-background-scale-mode: scale-and-crop; left: auto;">
+                <ui:Label text="0" name="WaveCount" style="position: absolute; top: 20px; left: 116px; -unity-font-definition: url(&quot;project://database/Assets/UI/Iceland-Regular.ttf?fileID=12800000&amp;guid=37f79c70bf284cc4a8468bd5f5ab57d9&amp;type=3#Iceland-Regular&quot;); font-size: 34px; color: rgb(255, 255, 255); -unity-text-align: upper-center; width: 24px;"/>
             </ui:VisualElement>
-            <ui:VisualElement name="BaseHealth" style="flex-grow: 1; position: relative; width: 80px; height: 20px; align-items: auto; align-content: auto; top: 61px; left: 8px;">
+            <ui:VisualElement name="BaseHealth" style="flex-grow: 1; position: absolute; width: 48px; height: 20px; align-items: auto; align-content: auto; top: 72px; left: auto;">
                 <ui:VisualElement name="HealthIcon" style="flex-grow: 1; width: 13px; position: absolute; height: 14px; background-image: url(&quot;project://database/Assets/UI/Health%20Icon.png?fileID=2800000&amp;guid=e269041d4d3d50545a8b1a881925c87b&amp;type=3#Health Icon&quot;); -unity-background-scale-mode: scale-to-fit; top: 2px; left: 1px; min-width: 18px; min-height: 17px;"/>
                 <ui:Label text="100" name="HealthAmount" style="position: absolute; top: -7px; left: 18px; color: rgb(255, 255, 255); font-size: 15px; width: 60px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="BaseCurrency" style="flex-grow: 1; position: absolute; width: 67px; height: 21px; top: 19px; left: 35px;">
+                <ui:VisualElement name="CurrencyIcon" style="flex-grow: 1; width: 23px; background-image: url(&quot;project://database/Assets/UI/Currency%20Icon.png?fileID=2800000&amp;guid=4fd4bf47be510c047a3375ae4d24cfa9&amp;type=3#Currency Icon&quot;); -unity-background-scale-mode: scale-to-fit; height: 17px;"/>
+                <ui:Label text="0" name="CurrencyAmount" style="position: absolute; top: -10px; left: 21px; color: rgb(255, 255, 255); font-size: 20px; width: 64px; height: 32px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="SettingsContainer" class="SettingsVisible SettingsHide" style="flex-grow: 0; top: auto; right: auto; bottom: auto; justify-content: center; align-self: flex-end;">

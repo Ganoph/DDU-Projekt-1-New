@@ -15,10 +15,15 @@ public class Enemy : MonoBehaviour
     public void Init()
     {
         _audioSource = GetComponent<AudioSource>();
+
+        _audioSource.Stop();
         _audioSource.volume = 1f;
+        _audioSource.loop = true;
+
         Health = MaxHealth;
         transform.position = GameLoopManager.NodePositions[0];
         NodeIndex = 0;
+
         _audioSource.Play();
     }
 }

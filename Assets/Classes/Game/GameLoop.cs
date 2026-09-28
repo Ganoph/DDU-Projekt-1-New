@@ -209,16 +209,31 @@ public struct MoveEnemiesJob : IJobParallelForTransform
 
     public void Execute(int index, TransformAccess transform)
     {
-        //if (NodeIndex[index] < NodePositions.Length)
-        //{
+        if (NodeIndex[index] >= NodePositions.Length)
+            return;
 
-        //}
+        Vector3 positionToMoveTo = NodePositions[NodeIndex[index]];
 
+        // Direction to the node
+        Vector3 direction = positionToMoveTo - transform.position;
 
-        Vector3 PositionToMoveTo = NodePositions[NodeIndex[index]];
-        transform.position = Vector3.MoveTowards(transform.position, PositionToMoveTo, EnemySpeed[index] * deltaTime);
+        // Ignore vertical movement
+        direction.y = 0f;
 
-        if (transform.position == PositionToMoveTo)
+        if (direction.sqrMagnitude > 0.001f)
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
+
+        // Move
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            positionToMoveTo,
+            EnemySpeed[index] * deltaTime
+        );
+
+        // Next node
+        if (transform.position == positionToMoveTo)
         {
             NodeIndex[index]++;
         }

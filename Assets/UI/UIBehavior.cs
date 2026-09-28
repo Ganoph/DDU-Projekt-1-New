@@ -21,6 +21,7 @@ public class UIBehavior : MonoBehaviour
     private Button _upgradeButtonB;
     private Label _waveCount;
     private Label _baseHealth;
+    private Label _moneyDisplay;
 
 
     [SerializeField] private int upgradeLevelA = 0;
@@ -44,6 +45,7 @@ public class UIBehavior : MonoBehaviour
         _upgradeButtonB = _document.rootVisualElement.Q<Button>("UpgradeB");
         _waveCount = _document.rootVisualElement.Q<Label>("WaveCount");
         _baseHealth = _document.rootVisualElement.Q<Label>("HealthAmount");
+        _moneyDisplay = _document.rootVisualElement.Q<Label>("CurrencyAmount");
 
         _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClick);
         _settingsButton.RegisterCallback<ClickEvent>(OnSettingsButtonClick);
@@ -100,6 +102,11 @@ public class UIBehavior : MonoBehaviour
         _closeButton.UnregisterCallback<ClickEvent>(OnCloseButtonClick);
         _upgradeButtonA.UnregisterCallback<ClickEvent>(OnUpgradeAClicked);
         _upgradeButtonB.UnregisterCallback<ClickEvent>(OnUpgradeBClicked);
+    }
+
+    public void UpdateMoney(int money)
+    {
+        _moneyDisplay.text = $"{money}";
     }
 
 
