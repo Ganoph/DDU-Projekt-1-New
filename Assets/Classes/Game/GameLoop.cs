@@ -25,7 +25,7 @@ public class GameLoopManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        PlayerStatistics = FindObjectOfType<PlayerStats>();
+        PlayerStatistics = FindFirstObjectByType<PlayerStats>();
         DamageData = new Queue<EnemyDamageData>();
         TowersInGame = new List<TowerBehaviour>();
         EnemyIDsToSummon = new Queue<int>();

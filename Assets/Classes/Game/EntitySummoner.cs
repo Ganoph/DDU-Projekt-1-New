@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EntitySummoner : MonoBehaviour
@@ -30,7 +29,6 @@ public class EntitySummoner : MonoBehaviour
 
 
             EnemySummonData[] Enemies = Resources.LoadAll<EnemySummonData>("Enemies");
-            //Debug.Log(Enemies[0].name);
 
             foreach (EnemySummonData enemy in Enemies)
             {
